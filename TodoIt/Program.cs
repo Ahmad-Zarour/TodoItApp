@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TodoItApp
+namespace TodoIt
 {
     class Program
     {
