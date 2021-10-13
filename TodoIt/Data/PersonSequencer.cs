@@ -8,10 +8,10 @@ namespace TodoIt.Data
     {
         static int personId;
 
-        // Property to get the person Id value , for testing purpose
+        // Property to get the personId value , for testing purpose
         public int PersonId{ get { return personId; } }
 
-        // Method to increase the personId by one
+        // Method to increase personId by one
         public static int nextPersonId()
         {
             return ++personId;
