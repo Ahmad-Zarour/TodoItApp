@@ -43,7 +43,13 @@ namespace TodoIt.Model
             }
         }
 
-        // Constructor to initiate the person object
+        // Constructors to initiate the person object
+        //public Person()
+        //{
+        //    personId +=1;
+        //    FirstName = "NoName";
+        //    LastName = "NoLastName";
+        //}
         public Person(int personId,string firstName, string lastName)
         {
             this.personId = personId;

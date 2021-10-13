@@ -1,4 +1,6 @@
 ﻿using System;
+using TodoIt.Model;
+using TodoIt.Data;
 
 namespace TodoIt
 {
@@ -6,7 +8,7 @@ namespace TodoIt
     {
         static void Main(string[] args)
         {
-            
+
         }
     }
 }
