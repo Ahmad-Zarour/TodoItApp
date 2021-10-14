@@ -52,7 +52,7 @@ namespace TodoIt.Data
         public Person AddNewPerson(string firstName, string lastName)
         {
             Array.Resize<Person>(ref personArray, personArray.Length + 1); // expand the size of personArray by 1
-            return personArray[personArray.Length-1] = new Person(PersonSequencer.nextPersonId(), firstName, lastName); 
+            return personArray[^1] = new Person(PersonSequencer.nextPersonId(), firstName, lastName); 
         }
 
         // Clear all the content of personArray and reset the size to zero

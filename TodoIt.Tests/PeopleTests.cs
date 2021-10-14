@@ -28,8 +28,8 @@ namespace TodoIt.Tests
         {
             People sut = new People();
             var callResult = sut.AddNewPerson("Harry", "Kane");
-            var HarryId = callResult.PersonId;
-            var personHasId = sut.FindById(HarryId);
+            var lastTodoId = callResult.PersonId;
+            var personHasId = sut.FindById(lastTodoId);
             Assert.Equal(callResult.PersonId, personHasId.PersonId);
             Assert.Equal(callResult.FirstName, personHasId.FirstName);
             Assert.Equal(callResult.LastName, personHasId.LastName);
