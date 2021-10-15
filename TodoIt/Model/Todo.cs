@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TodoIt.Data;
 
 namespace TodoIt.Model
 {
@@ -10,9 +11,7 @@ namespace TodoIt.Model
         readonly int todoId;
         string description;
         bool done;
-        Person assignee;
-
-
+        Person assignee ;
 
         // Readonly property to get the TodoID
         public int TodoId
@@ -22,7 +21,10 @@ namespace TodoIt.Model
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) 
+                    throw new ArgumentNullException("Null or white space only not accepted for todo description");
+                description = value; }
         }
         public bool Done
         {
@@ -32,7 +34,13 @@ namespace TodoIt.Model
         public Person Assignee
         {
             get { return assignee; }
-            set { assignee = value; }
+            set {
+                if (value == null)
+                {
+                    throw new ArgumentException("No Assigned person, null or empty");
+                }
+                assignee = value;
+            }
         }
 
         // Constructor to initiate the Todo object, takes todoId and description
@@ -40,6 +48,7 @@ namespace TodoIt.Model
         {
             this.todoId = todoId;
             Description = description;
+            this.done = false;        
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TodoIt.Model
         string firstName;
         string lastName;
 
-        // Properties for encapsulation
+        // Properties 
         public int PersonId { get { return personId; } }
         public string FirstName
         {
@@ -23,7 +23,7 @@ namespace TodoIt.Model
             {
                 // If the argument is null or empty string so the program will throw an ArgumentException.
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException("Null or Empty entry are not accepted!!");
+                    throw new ArgumentException("Null or Empty entry for firstname are not accepted!!");
                 else
                     firstName = value;
             }
@@ -36,28 +36,20 @@ namespace TodoIt.Model
             }
             set
             {
+                // If the argument is null or empty string so the program will throw an ArgumentException.
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException("Null or Empty entry are not accepted!!");
+                    throw new ArgumentException("Null or Empty entry values for lastname are not accepted!!");
                 else
                     lastName = value;
             }
         }
 
         // Constructors to initiate the person object
-        //public Person()
-        //{
-        //    personId +=1;
-        //    FirstName = "NoName";
-        //    LastName = "NoLastName";
-        //}
         public Person(int personId,string firstName, string lastName)
         {
             this.personId = personId;
             FirstName = firstName;
-            LastName = lastName;
-            
+            LastName = lastName;   
         }
     }
-
-
 }

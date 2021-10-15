@@ -10,13 +10,24 @@ namespace TodoIt.Data
     public class People
     {
 
-        private static Person[] personArray = new Person[0];
+        private static Person[] personArray;
 
+        public People()
+        {
+            personArray = new Person[0];
+        }
+
+        public Person[] PersonArray 
+        { get
+            { return personArray; }
+        }
+      
         // Size method get the size of personArray and return 0 if its empty
         public int Size()
         {
             if(personArray.Length == 0)
             {
+
                 Console.WriteLine("No person has been Added yet!!");
                 return 0;
             } 
@@ -39,13 +50,11 @@ namespace TodoIt.Data
         // FindById method , if person Id was found so method returns the relevant data else return null as not found
         public Person FindById(int personHasId)
         {
-            if (personArray.Length < personHasId || personArray.Length > personHasId)
-            { 
-                Console.WriteLine($"Person with ID {personHasId} not exsist");
-                return null;
-            }
-            else
-            return personArray[personHasId-1];
+            for (int i = 0; i < personArray.Length; i++)
+            if (personArray[i].PersonId == personHasId) 
+                return personArray[i];
+
+            return null;  // to be handled later
         }
 
         // Add a new person to the personArray and return an object person
