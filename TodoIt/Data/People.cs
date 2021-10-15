@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TodoIt.Model;
+using System.Linq;
 
 
 
@@ -70,6 +71,20 @@ namespace TodoIt.Data
             Array.Clear(personArray, 0, personArray.Length);
             Array.Resize<Person>(ref personArray,0);
             Console.WriteLine("All Data has been cleared");
+        }
+
+        //11//
+        //
+        public bool RemovePerson(Person person)  // by using LINQ
+        {
+            var indexOf = Array.FindIndex(personArray, w => w.PersonId.Equals(person.PersonId));
+            if (personArray == null || indexOf < 0)
+            {
+                Console.WriteLine("Person not found");
+                return false;
+            }       
+            personArray = personArray.Where((w, location) => !location.Equals(indexOf)).ToArray();
+            return true;
         }
     }
 }

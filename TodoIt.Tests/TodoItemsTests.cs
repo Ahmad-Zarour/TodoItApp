@@ -90,9 +90,10 @@ namespace TodoIt.Tests
         public void FindByAssignee_ShouldGetAllAssignee_withGivenPesonID(int personId)
         { 
             People people = new People();
+            var assignee = people.AddNewPerson("rami", "Sami");
             TodoItems sut = new TodoItems();
             //add a person and assigne to a task
-            var todo = sut.AddNewTodo("New task to do").Assignee = people.AddNewPerson("rami", "Sami");
+            sut.AddNewTodo("New task to do").Assignee = assignee ;
             var callResult = sut.FindByAssignee(personId); // it should get the one that has personId = 1
             Assert.Equal(personId, callResult[0].Assignee.PersonId);
             Assert.Equal("rami", callResult[0].Assignee.FirstName);
@@ -111,6 +112,8 @@ namespace TodoIt.Tests
             Assert.Equal(assignee, callResult[0].Assignee);
             Assert.Equal(assignee.PersonId, callResult[0].Assignee.PersonId);
         }
+
+        // Testing FindUnassignedTodoItems
         [Fact]
         public void FindUnassignedTodoItems_ShouldGetAll_UnassignedTodoItems()
         {
@@ -123,6 +126,18 @@ namespace TodoIt.Tests
             Assert.Equal("New task to do", callResult[0].Description);
             Assert.Equal("Another new task to do", callResult[1].Description);
 
+        }
+
+        // Testing RemoveTodo method
+        [Fact]
+        public void RemoveTodo_Should_TerminateTodoItem()
+        {
+            TodoItems sut = new TodoItems();
+            var todo = sut.AddNewTodo("Todo task to be deleted");
+            
+            Assert.True(sut.RemoveTodo(todo));
+            // now no toto in todoArry so method return false
+            Assert.False(sut.RemoveTodo(todo));
         }
     }
 }

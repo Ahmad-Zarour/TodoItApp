@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using TodoIt.Model;
+using System.Linq;
 
 
 namespace TodoIt.Data
@@ -130,6 +130,17 @@ namespace TodoIt.Data
                 }
             }
             return unAssignedTodoItems;
+        }
+
+        public bool RemoveTodo(Todo todoItem)
+        {
+            var indexOf = Array.FindIndex(todoArray, w => w.TodoId.Equals(todoItem.TodoId));
+            if ( todoArray == null || indexOf < 0)
+                return false;
+
+            
+            todoArray = todoArray.Where((w, location) => !location.Equals(indexOf)).ToArray();
+            return true;
         }
     }
 }

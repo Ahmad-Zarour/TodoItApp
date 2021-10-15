@@ -72,5 +72,15 @@ namespace TodoIt.Tests
             Assert.Equal(0, sut.Size());
         }
 
+        // Testing RemovePerson method
+        [Fact]
+        public void RemovePerson_Should_TerminatePerson()
+        {
+            People sut = new People();
+            var person = sut.AddNewPerson("NewPerson", "LastName");
+            Assert.True(sut.RemovePerson(person));
+            // now no person in personArry so method return false
+            Assert.False(sut.RemovePerson(person));
+        }
     }
 }
